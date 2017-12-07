@@ -19,8 +19,11 @@
 
         <%= f.label :photo, "Upload Photo" %>
         <%= f.file_field :photo, placeholder: 'Upload beautiful photos of your restaurant' %>
-
-        <%= f.submit %>
+        <div class='form-container'>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+              <i class="material-icons right">send</i>
+            </button>
+        </div>
       <% end %>
     </div>
   </div>

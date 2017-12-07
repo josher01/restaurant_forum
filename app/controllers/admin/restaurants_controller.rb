@@ -5,7 +5,7 @@ class Admin::RestaurantsController < ApplicationController
 
 
   def index
-    @rests = Restaurant.all
+    @rests = Restaurant.order(:created_at).page(params[:page]).per(10)
   end
 
 
