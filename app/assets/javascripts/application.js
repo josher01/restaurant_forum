@@ -13,9 +13,10 @@
 
 
 //= require jquery
-//= require jquery.turbolinks
-//= require jquery_ujs
 //= require materialize-sprockets
+//= require jquery_ujs
+//= require toastr
+//= require jquery.turbolinks
 //= require_tree .
 
 $(document).ready(function(){

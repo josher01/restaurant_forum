@@ -39,6 +39,8 @@ gem 'jquery-turbolinks', '~> 2.1'
 gem 'carrierwave', '~> 1.2', '>= 1.2.1'
 gem 'ffaker', '~> 2.7'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'toastr-rails', '~> 1.0', '>= 1.0.3'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

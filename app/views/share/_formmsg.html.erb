@@ -1,0 +1,7 @@
+<% unless @rest.errors.empty? %>
+  <script type="text/javascript">
+    <% @rest.errors.full_messages.each do |value| %>
+      toastr.error('<%= value %>')
+    <% end %>
+  </script>
+<% end %>

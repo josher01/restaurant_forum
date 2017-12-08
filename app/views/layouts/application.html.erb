@@ -22,65 +22,13 @@
   </head>
 
   <body>
-   
-    <!-- Dropdown Structure -->
-
-      <ul id="dropdown1" class="dropdown-content">
-        <% if user_signed_in? %>
-           <li><%= link_to 'Edit Profile' , edit_user_registration_path %></li>
-           <li><%= link_to 'Log Out' , destroy_user_session_path , method: :delete %></li>
-        <% else %>
-           <li><%= link_to 'Sign In' , new_user_session_path %></li>
-           <li><%= link_to 'Sign Up' , new_user_registration_path %></li>
-        <% end %>
-      </ul>
-
-      <ul id="dropdown2" class="dropdown-content">
-        <% if user_signed_in? %>
-           <li><%= link_to 'Edit Profile' , edit_user_registration_path %></li>
-           <li><%= link_to 'Log Out' , destroy_user_session_path , method: :delete %></li>
-        <% else %>
-           <li><%= link_to 'Sign In' , new_user_session_path %></li>
-           <li><%= link_to 'Sign Up' , new_user_registration_path %></li>
-        <% end %>
-      </ul>
-      
-      <nav>
-        <div class="nav-wrapper">
-          <a href="#!" class="brand-logo">Logo</a>
-          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-          <ul class="right hide-on-med-and-down">
-            <li><%= link_to 'New', new_admin_restaurant_path %></li>
-            <li><%= link_to 'Listing' , admin_restaurants_path %></li>
-            <!-- Dropdown Trigger -->
-            <% if user_signed_in? %>
-              <li><a class="dropdown-button" href="#" data-activates="dropdown1"><%= current_user.email %><i class="material-icons right">arrow_drop_down</i></a></li>
-            <% else %>
-              <li><a class="dropdown-button" href="#" data-activates="dropdown1"> Guest <i class="material-icons right">arrow_drop_down</i></a></li>
-            <% end %>
-          </ul>
-
-          <ul class='side-nav' id='mobile-demo'>
-            <li><%= link_to 'New', new_admin_restaurant_path %></li>
-            <li><%= link_to 'Listing' , admin_restaurants_path %></li>
-            <!-- Dropdown Trigger -->
-            <% if user_signed_in? %>
-              <li><a class="dropdown-button" href="#!" data-activates="dropdown2"><%= current_user.email %><i class="material-icons right">arrow_drop_down</i></a></li>
-            <% else %>
-              <li><a class="dropdown-button" href="#!" data-activates="dropdown2"> Guest <i class="material-icons right">arrow_drop_down</i></a></li>
-            <% end %>
-          </ul>
-        </div>
-      </nav>
-
-
-  <div class="container">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <%= yield %>  
-
-  </div>
+    
+      <%= render 'share/navbar' %>
+      <%= render 'share/message' %>
+  
+      <div class="container">
+        <%= yield %>  
+      </div>
 
 
   </body>
