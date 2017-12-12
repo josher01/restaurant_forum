@@ -19,6 +19,17 @@
 @import "materialize";
 @import "toastr";
 
-.form-container {
-  padding-top: 5rem;
+
+
+.container {
+  padding-top: 4rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.line-title {
+  color: red;
 }

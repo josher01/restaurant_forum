@@ -1,25 +1,44 @@
 
-<div class="container">
-  <div class="row">
-      <% @rests.each do |r| %>
-          <div class="col s12 m6 l6">
-            <div class="card">
-              <div class="card-image">
-                <%= image_tag r.photo, alt: 'pic'%>
-                <span class="card-title"><%= r.res_name %></span>
-              </div>
-              <div class="card-content">
-                <p class= 'truncate'><%= r.res_description %></p>
-              </div>
-              <div class="card-action center">
-                <%= link_to 'Show', admin_restaurant_path(r) %>
-                <%= link_to 'Edit', edit_admin_restaurant_path(r) %>
-                <%= link_to 'Delete', admin_restaurant_path(r), method: :delete, data: {confirm:"Are you sure?"}%>
-              </div>
-            </div>  
-          </div>
-      <% end %>
-   </div>
+
+<div class="row">
+
+  <div class="col s4 m4 l4">
+    <%= render :partial => 'share/sidebar' %>
+  </div>
+
+  <div class="col s8 m8 l8">     
+        <table class= 'highlight'>
+                <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>餐廳名稱</th>
+                      <th>餐廳分類</th>
+                      <th>餐廳登錄日期</th>
+                      <th>餐廳管理</th>
+                      <th>上次更新</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <% @rests.each do |r| %>
+                    <tr>
+                      <td><%= r.id %></td>
+                      <td><%= r.res_name %></td>
+                      <td><%= r.category.name %></td>
+                      <td><%= r.created_at.to_date %></td>
+                      <td>
+                         <%= link_to ('<i class="small material-icons">expand_more</i>'.html_safe), admin_restaurant_path(r) %>
+                         <%= link_to ('<i class="small material-icons">edit</i>'.html_safe), edit_admin_restaurant_path(r) %>
+                         <%= link_to ('<i class="small material-icons">delete</i>'.html_safe), admin_restaurant_path(r), method: :delete, data: {confirm:"Are you sure?"}%>
+                      </td>
+                      <td><%= r.updated_at.to_date %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+        </table>
+     
+  </div>
 </div>
+
 
 <div class='pagination center'><%= paginate @rests %></div>

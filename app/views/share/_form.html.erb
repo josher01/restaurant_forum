@@ -1,9 +1,9 @@
 
 <%= render 'share/formmsg' %>
 
-<div class="form-container">
+
   <div class="row">
-    <div class='col s12 m6 offset-m3 l6 offset-l3'>
+    <div class='col s12 m8 offset-m2 l8 offset-l2'>
       <%= form_for [:admin, @rest] do |f| %>
        <%= f.label :name, "Name" %>
         <%= f.text_field :res_name, placeholder: 'Restaurant name' %>
@@ -22,15 +22,17 @@
 
         <%= f.label :photo, "Upload Photo" %>
         <%= f.file_field :photo, placeholder: 'Upload beautiful photos of your restaurant' %>
-        <div class='form-container'>
-            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <br/>
+        <br/>
+        
+            <span><button class="btn waves-effect waves-light" type="submit" name="action">Submit
               <i class="material-icons right">send</i>
-            </button>
-            <%= link_to 'Back to Listing' , admin_restaurants_path, class: 'btn waves-effect waves-light'%>
-        </div>
+            </button></span>
+            <span><%= link_to 'Back to Listing' , admin_restaurants_path, class: 'btn waves-effect waves-light'%></span>
+     
       <% end %>
     </div>
   </div>
-</div>
+
 
 
