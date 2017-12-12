@@ -6,27 +6,41 @@
     <div class='col s12 m8 offset-m2 l8 offset-l2'>
       <%= form_for [:admin, @rest] do |f| %>
 
-        <%= f.label :res_name, "餐廳名稱" %>
-        <%= f.text_field :res_name, placeholder: 'Restaurant name' %>
+        <div class="input-field">
+          <%= f.text_field :res_name , class: 'validate'%>
+          <%= f.label :res_name, "餐廳名稱", class: 'active' %>
+        </div>
 
+        <div class="input-field">
+          <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category" }%>
+          <%= f.label :category_id, "餐廳分類" %>
+        </div>
+        <br/>
 
-        <%= f.label :category_id, "餐廳分類" %>
-        <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category" }, class: "input-field" %>
+        <div class="input-field">
+          <%= f.text_field :res_tel, class: 'validate'%>
+          <%= f.label :res_tel, "餐廳電話", class: 'active'%>
+        </div>
 
-        <%= f.label :tel, "Tel" %>
-        <%= f.text_field :res_tel,placeholder: 'Tel, eg. 02-12345678' %>
+        <div class="input-field">
+          <%= f.text_field :res_address, class: 'validate'%>
+          <%= f.label :res_address, "餐廳地址", class: 'active' %>
+        </div>
 
-        <%= f.label :res_address, "Address" %>
-        <%= f.text_field :res_address, placeholder: 'Restaurant address'%>
+        <div class="input-field">
+          <%= f.text_field :res_opening_hours,  class: 'validate' %>
+          <%= f.label :res_opening_hours, "營業時間" , class: 'active'%>
+        </div>
 
-        <%= f.label :res_opening_hours, "Opening Hours" %>
-        <%= f.text_field :res_opening_hours, placeholder: 'Restaurant opening hours' %>
+        <div class="input-field">
+          <%= f.text_area :res_description, class: 'materialize-textarea' %>
+          <%= f.label :res_description, "餐廳特色", class: 'active' %>
+        </div>
 
-        <%= f.label :res_description, "Description" %>
-        <%= f.text_area :res_description, placeholder: 'Give few lines to describe your restaurant' %>
-
-        <%= f.label :photo, "Upload Photo" %>
-        <%= f.file_field :photo, placeholder: 'Upload beautiful photos of your restaurant' %><br/><br/>
+        <div class="input-field">
+          <%= f.file_field :photo,  class: 'validate' %><br/><br/>
+          <%= f.label :photo, "上傳圖片", class: 'active' %>
+        </div>
 
             <span><button class="btn waves-effect waves-light" type="submit" name="action">Submit
               <i class="material-icons right">send</i>

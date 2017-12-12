@@ -24,4 +24,5 @@ $(document).ready(function(){
     $('.dropdown-button').dropdown();  
     $('ul.tabs').tabs();
     $('select').material_select();
+    Materialize.updateTextFields();
     });
