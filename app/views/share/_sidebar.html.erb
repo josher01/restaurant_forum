@@ -1,5 +1,6 @@
 
 <h3>Dash Board</h3>
+
 <li class="line-title"><strong><%= "目前餐廳論壇上共計有 #{Restaurant.all.count}間餐廳資料" %></strong></li>
 
 <li class="line-title"><strong><%= "過去一周內, 有#{Restaurant.where("created_at > ?", 7.days.ago).count} 間餐廳登錄資料" %></strong></li>

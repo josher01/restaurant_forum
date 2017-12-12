@@ -28,8 +28,8 @@
                       <td><%= c.created_at.to_date %></td>
                       <td><%= c.updated_at.to_date %></td>
                        <td>
-                          <%= link_to ('<i class="small material-icons">edit</i>'.html_safe), edit_admin_restaurant_path(c) %>
-                          <%= link_to ('<i class="small material-icons">delete</i>'.html_safe) ,admin_restaurant_path(c), method: :delete, data: {confirm:"Are you sure?"}%>
+                          <%= link_to ('<i class="small material-icons">edit</i>'.html_safe), edit_admin_category_path(c) %>
+                          <%= link_to ('<i class="small material-icons">delete</i>'.html_safe) ,admin_category_path(c), method: :delete, data: {confirm:"Are you sure?"}%>
                       </td>
                     </tr>
                   <% end %>

@@ -19,7 +19,7 @@ class Admin::CategoriesController < ApplicationController
     if @category.save
       redirect_to admin_restaurants_path, notice: "Category was successfully created !"
     else
-      redirect_to admin_restaurants_path, alert: "Something went wrong..."
+      redirect_to admin_categories_path, alert: "Something went wrong..."
     end
   end
 
@@ -31,7 +31,7 @@ class Admin::CategoriesController < ApplicationController
   def set_cat
     @category = Category.find(params[:id])
   end
-  
+
   def authenticate_admin
     if (!current_user.admin?)
       flash[:alert] = 'Not Certified Admin !'

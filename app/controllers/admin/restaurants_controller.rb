@@ -15,7 +15,6 @@ class Admin::RestaurantsController < ApplicationController
 
 
   def show
- 
   end
 
   def create
@@ -30,7 +29,6 @@ class Admin::RestaurantsController < ApplicationController
   end
 
   def edit
-  
   end
 
   def update
