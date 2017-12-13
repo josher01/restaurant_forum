@@ -7,9 +7,10 @@ class Admin::CategoriesController < ApplicationController
   def index
     @categories = Category.all
     @category = Category.new
-
   end
 
+  def edit
+  end
 
   def show
   end
@@ -17,10 +18,23 @@ class Admin::CategoriesController < ApplicationController
   def create
     @category = Category.new(cat_params)
     if @category.save
-      redirect_to admin_restaurants_path, notice: "Category was successfully created !"
+      redirect_to admin_categories_path, notice: "Category was successfully created !"
     else
       redirect_to admin_categories_path, alert: "Something went wrong..."
     end
+  end
+
+  def update
+    if @category.update(cat_params)
+      redirect_to admin_categories_path, notice: "Category was successfully created !"
+    else
+      redirect_back(fallback_location: request.referrer, alert: "Something went wrong...")
+    end
+  end
+
+  def destroy
+    @category.delete
+    redirect_to admin_categories_path, notice: "Category was successfully deleted !"
   end
 
   private

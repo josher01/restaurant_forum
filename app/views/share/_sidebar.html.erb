@@ -1,9 +1,15 @@
-
-<h3>Dash Board</h3>
-
-<li class="line-title"><strong><%= "目前餐廳論壇上共計有 #{Restaurant.all.count}間餐廳資料" %></strong></li>
-
-<li class="line-title"><strong><%= "過去一周內, 有#{Restaurant.where("created_at > ?", 7.days.ago).count} 間餐廳登錄資料" %></strong></li>
-
-<p><%= link_to '餐廳管理', admin_restaurants_path %> | <%= link_to '分類管理', admin_categories_path %></p>
-
+<div class="card blue-grey darken-1">
+  <div class="card-content white-text">
+       <span class="card-title">Dash Board</span>
+       <ul>
+         <li><strong><%= "目前餐廳論壇上共計有 #{Restaurant.all.count}間餐廳資料" %></strong></li>
+         <li"><strong><%= "過去一周內, 有#{Restaurant.where("created_at > ?", 7.days.ago).count}間餐廳登錄資料" %></strong></li>
+       </ul>
+  </div>
+  
+  <div class="card-action">
+       <%= link_to '餐廳管理', admin_restaurants_path %>
+       <%= link_to '分類管理', admin_categories_path %>
+  </div>
+</div>
+   

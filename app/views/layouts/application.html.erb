@@ -15,30 +15,26 @@
        
 
       <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-     
-    
-    </head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>   
   </head>
 
   <body>
-    
+    <header>
       <%= render 'share/navbar' %>
-      <%= render 'share/message' %>
-  
+    </header>
+    
+    <main>
+      <%= render 'share/message' %> 
       <div class="container">
         <%= yield %>  
       </div>
+    </main>
 
-  </body>
-
-  <footer class='page-footer'>
+    <footer class='page-footer'>
      <div class='footer-copyright'>
          © 2017 Copyright EZfood
      </div>
-  </footer>
+    </footer>
+  </body>
 
-
- 
-            
 </html>

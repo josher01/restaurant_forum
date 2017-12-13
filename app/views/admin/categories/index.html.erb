@@ -3,39 +3,39 @@
     <%= render :partial => 'share/sidebar' %>
 
     <%= form_for [:admin, @category] do |c| %>
-        <%= c.text_field :name, placeholder: "Can not match category? Let's create a new one" %>
-        <%= c.submit 'Add NEW Category' %>
+        <%= c.text_field :name, placeholder: "Can not match category? Create a new one" %>
+    
+        <%= c.submit "Add", class: "btn-floating btn-large waves-effect waves-light dark-blue" %>
     <% end %>
   </div>
 
   <div class="col s8 m8 l8">     
-        <table class= 'highlight'>
-                <thead>
-                  <tr>
-                      <th>ID</th>
-                      <th>餐廳分類名稱</th>
-                      <th>分類建立日期</th>
-                      <th>上次更新</th>
-                      <th>分類管理</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <% @categories.each do |c| %>
-                    <tr>
-                      <td><%= c.id %></td>
-                      <td><%= c.name %></td>
-                      <td><%= c.created_at.to_date %></td>
-                      <td><%= c.updated_at.to_date %></td>
-                       <td>
-                          <%= link_to ('<i class="small material-icons">edit</i>'.html_safe), edit_admin_category_path(c) %>
-                          <%= link_to ('<i class="small material-icons">delete</i>'.html_safe) ,admin_category_path(c), method: :delete, data: {confirm:"Are you sure?"}%>
-                      </td>
-                    </tr>
-                  <% end %>
-                </tbody>
-        </table>
-     
+   <table class= 'highlight'>
+     <thead>
+       <tr>
+           <th>ID</th>
+           <th>餐廳分類名稱</th>
+           <th>分類建立日期</th>
+           <th>上次更新</th>
+           <th>分類管理</th>
+       </tr>
+     </thead>
+   
+     <tbody>
+       <% @categories.each do |c| %>
+         <tr>
+           <td><%= c.id %></td>
+           <td><%= c.name %></td>
+           <td><%= c.created_at.to_date %></td>
+           <td><%= c.updated_at.to_date %></td>
+            <td>
+               <%= link_to ('<i class="small material-icons">edit</i>'.html_safe), edit_admin_category_path(c)%>
+               <%= link_to ('<i class="small material-icons">delete</i>'.html_safe) ,admin_category_path(c), method: :delete, data: {confirm:"Are you sure?"}%>
+           </td>
+         </tr>
+       <% end %>
+     </tbody>
+</table>
   </div>
 </div>
 
