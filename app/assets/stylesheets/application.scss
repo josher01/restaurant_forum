@@ -21,6 +21,11 @@
 
 /*sticky-footer*/
 
+html {
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
+  }
+        
+
 body {
     display: flex;
     min-height: 100vh;
@@ -44,3 +49,9 @@ img {
 .logo {
   padding-left: 2rem;
 }
+
+.devise-title {
+  color: #455a64 ;
+}
+
+

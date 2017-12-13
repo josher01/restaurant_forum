@@ -4,7 +4,6 @@
 
     <%= form_for [:admin, @category] do |c| %>
         <%= c.text_field :name, placeholder: "Can not match category? Create a new one" %>
-    
         <%= c.submit "Add", class: "btn-floating btn-large waves-effect waves-light dark-blue" %>
     <% end %>
   </div>

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :restaurants , only: [:show, :index]
   resources :categories , only: [:show, :index]
-  root 'restaurants#index'
+  root 'admin/restaurants#index'
 
 
   namespace :admin do
