@@ -3,10 +3,10 @@
       <div class="col s12">
           <div class="card">
               <div class="card-image ">
-                  <%= image_tag @rest.photo,  alt: 'pic'%>
-                  <span class="card-title"><%= @rest.res_name %></span>
+                  <%= image_tag @rest.photo, alt: 'pic', class: 'responsive-img'%>
               </div>
               <div class="card-content">
+                  <span class="card-title"><%= @rest.res_name %></span>
                   <p ><%= @rest.res_description %></p>
                   <p ><%= @rest.res_address %></p>
                   <p ><%= @rest.res_tel %></p><br/>

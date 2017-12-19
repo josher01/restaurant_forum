@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   def admin?
-    self.role = 'admin'
+    self.role == 'admin'
   end
 
 end

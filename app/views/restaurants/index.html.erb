@@ -1,25 +1,34 @@
-<h2>餐廳前台首頁</h2>
-<div class="container">
-  <div class="row">
-      <% @rests.each do |r| %>
-          <div class="col s12 m6 l6">
-            <div class="card">
-              <div class="card-image">
-                <%= image_tag r.photo, alt: 'pic', class: "responsive-img" %>
-                <span class="card-title"><%= r.res_name %></span>
-              </div>
-              <div class="card-content">
-                <p class= 'truncate'><%= r.res_description %></p>
-              </div>
-              <div class="card-action center">
-                <%= link_to ('<i class="small material-icons">expand_more</i>'.html_safe), admin_restaurant_path(r) %>
-                <%= link_to ('<i class="small material-icons">edit</i>'.html_safe), edit_admin_restaurant_path(r) %>
-                <%= link_to ('<i class="small material-icons">delete</i>'.html_safe), admin_restaurant_path(r), method: :delete, data: {confirm:"Are you sure?"}%>
-              </div>
-            </div>  
-          </div>
+<div class="row">
+  <div class="col s12">
+    <ul class="tabs tabs-fixed-width ">
+      <li class="tab col s2 "><%= link_to '全部餐廳' , restaurants_path , target: '_self', class: "active" %></li>
+      <% @categories.each do |c| %>
+        <li class="tab col s2 ">
+          <%= link_to c.name, category_path(c), target: '_self'  %>
+        </li>
       <% end %>
-   </div>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <% @rests.each do |r| %>
+      <div class="col s12 m6 l4">
+        <div class="card">
+          <div class="card-image">
+            <%= image_tag r.photo, alt: 'pic' %>
+          </div>
+          <div class="card-content">
+            <span class="card-title"><%= r.res_name %></span>
+            <p class='chip'><%= r.category.name %></p><br/><br/>
+            <p class= 'truncate'><%= r.res_description %></p>
+          </div>
+          <div class="card-action center">
+            <%= link_to ('<i class="small material-icons">expand_more</i>'.html_safe), restaurant_path(r) %>
+          </div>
+        </div>  
+      </div>
+  <% end %>
 </div>
 
 <div class='center'><%= paginate @rests %></div>

@@ -21,9 +21,7 @@
 
 /*sticky-footer*/
 
-html {
-    font-family: GillSans, Calibri, Trebuchet, sans-serif;
-  }
+
         
 
 body {
@@ -41,9 +39,9 @@ main {
   padding-top: 4rem;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
+.card-img img {
+    width: 100%;
+    max-height: 180px;
 }
 
 .logo {
@@ -53,5 +51,21 @@ img {
 .devise-title {
   color: #455a64 ;
 }
+
+.main-container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.card{
+  
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+
+
 
 

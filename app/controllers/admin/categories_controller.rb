@@ -47,7 +47,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def authenticate_admin
-    if (!current_user.admin?)
+    unless current_user.admin?
       flash[:alert] = 'Not Certified Admin !'
       redirect_to root_path
     end
