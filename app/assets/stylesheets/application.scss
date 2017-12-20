@@ -36,7 +36,12 @@ main {
 
 
 .container {
-  padding-top: 4rem;
+  padding-top: 40px;
+  margin: 0 auto;
+}
+
+.row {
+  margin: 0 auto;
 }
 
 .card-img img {
@@ -58,11 +63,12 @@ main {
 }
 
 .card{
-  
+
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 4px;
   margin-bottom: 20px;
+
 }
 
 

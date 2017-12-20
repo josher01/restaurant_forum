@@ -3,4 +3,5 @@ class Restaurant < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   max_paginates_per 10
   belongs_to :category
+  has_many :comments
 end
