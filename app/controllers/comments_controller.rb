@@ -28,6 +28,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @rest = Restaurant.find(params[:restaurant_id])
+    if (@comment.user = current_user) || current_user.admin?
+      flash[:notice] = "Comment deleted successfully"
+      @comment.destroy
+      redirect_to restaurant_path(@rest)
+    else
+      redirect_back(fallback_location: request.referrer, alert: "Something went wrong...")
+    end
   end
 
   private

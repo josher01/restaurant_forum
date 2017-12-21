@@ -1,37 +1,61 @@
-<div class="container">
-    <div class="row">
-      <div class="col s12 m8 offset-m2 l8 offset-l2">
-          <div class="card">
-              <div class="card-image ">
-                  <%= image_tag @rest.photo,  alt: 'pic'%>
-              </div>
-              <div class="card-content">
-                  <span class="card-title"><%= @rest.res_name %></span>
-                  <p ><%= @rest.res_description %></p>
-                  <p ><%= @rest.res_tel %></p>
-                  <%= link_to 'Back to Listing' , restaurants_path, class: 'btn waves-effect waves-light'%>
-              </div>   
-          </div>
+
+  <div class='valign-wrapper'>
+    <%= link_to restaurants_path do %>
+       <i class= 'material-icons medium'>arrow_back</i> 
+    <% end %>
+    <div class="chip">
+       <%= @rest.category.name %> 
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m7 l7">
+      <div class="card ">
+        <div class="card-image ">
+         <%= image_tag @rest.photo,  alt: 'pic'%>
+        </div>
+        <div class="card-content">
+          <span class="card-title"><%= @rest.res_name %></span><br/>
+          <p >地址: <%= @rest.res_address %></p>
+          <p >電話: <%= @rest.res_tel %></p>
+          <p >營業時間: <%= @rest.res_opening_hours %></p>
+        </div>   
       </div>
     </div>
-
-
     
-      <div class="row">
-          <%= @comment.content %>
-      </div>
-
-
-    <div class="row">
-      <div class="col s12 m8 offset-m2 l8 offset-l2">
-        <%= form_for [@rest, @comment] do |comment| %>
-          <div class="input-field">
-            <i class="material-icons prefix">account_circle</i>
-            <%= comment.text_area :content , class: 'validate', placeholder: '留個言吧' %>
-            <%= comment.submit '新增評論' , class: 'btn btn-small waves-effect waves-light'%>
-          </div>
-        <% end %>
-      </div>
+    <div class="col s12 m5 l5 res-desc-show">  
+        <%= @rest.res_description %>
     </div>
-</div>
+  </div>
+
+  <br/><div class="divider"></div><br/>
+    
+  <div class="row">
+    <div class="col s12 m7 l7">
+      <% @rest.comments.each do |comment| %>
+        <div>
+          <h5><%= comment.user.email.split("@").first %></h5>
+          <p><%= simple_format comment.content %></p>
+          <p><%= time_ago_in_words(comment.created_at) + " ago" %>
+          <% if (comment.user == current_user) || current_user.admin? %>
+            <span><%= link_to '  Delete', restaurant_comment_path(@rest,comment), method: :delete, data: {confirm: "Are you sure ? "} %></span>
+          <% end %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m7 l7">
+      <%= form_for [@rest, @comment] do |comment| %>
+        <div class="input-field">
+          <i class="material-icons prefix">account_circle</i>
+          <%= comment.text_area :content , class: 'validate', placeholder: '留個言吧' %>
+          <span><%= comment.submit '新增評論' %></span>
+          <span><%= comment.button "Cancel", type: :reset %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
 

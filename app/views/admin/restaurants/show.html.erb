@@ -1,19 +1,28 @@
-<div class="container">
-    <div class="row">
-      <div class="col s12">
-          <div class="card">
-              <div class="card-image ">
-                  <%= image_tag @rest.photo, alt: 'pic', class: 'responsive-img'%>
-              </div>
-              <div class="card-content">
-                  <span class="card-title"><%= @rest.res_name %></span>
-                  <p ><%= @rest.res_description %></p>
-                  <p ><%= @rest.res_address %></p>
-                  <p ><%= @rest.res_tel %></p><br/>
-                  <%= link_to 'Back to dashboard' , admin_restaurants_path, class: 'btn waves-effect waves-light'%>
-              </div>
-          </div>
+ <div class='valign-wrapper'>
+    <%= link_to admin_restaurants_path do %>
+       <i class= 'material-icons medium'>arrow_back</i> 
+    <% end %>
+    <div class="chip">
+       <%= @rest.category.name %> 
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m7 l7">
+      <div class="card ">
+        <div class="card-image ">
+         <%= image_tag @rest.photo,  alt: 'pic'%>
+        </div>
+        <div class="card-content">
+          <span class="card-title"><%= @rest.res_name %></span><br/>
+          <p >地址: <%= @rest.res_address %></p>
+          <p >電話: <%= @rest.res_tel %></p>
+          <p >營業時間: <%= @rest.res_opening_hours %></p>
+        </div>   
       </div>
     </div>
-</div>
-
+    
+    <div class="col s12 m5 l5 res-desc-show">  
+        <%= @rest.res_description %>
+    </div>
+  </div>
