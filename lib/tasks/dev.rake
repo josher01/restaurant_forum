@@ -14,4 +14,17 @@ namespace :dev do
     puts "have created fake restaurants"
     puts "now you have #{Restaurant.count} restaurants data"
   end
+
+  task fake: :environment do
+    User.destroy_all
+
+    20.times do |i|
+      User.create!(email: FFaker::Internet.email,
+        password: FFaker::Internet.password,
+        
+      )
+    end
+    puts "have created fake users"
+    puts "now you have #{User.count} restaurants data"
+  end
 end

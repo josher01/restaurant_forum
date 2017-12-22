@@ -1,0 +1,25 @@
+<div class="row">
+  <% @rests.each do |r| %>
+      <div class="col s12 m6 l4">
+        <div class="card medium">
+          <div class="card-image">
+            <%= image_tag r.photo, alt: 'pic', class: "responsive-img" %>
+          </div>
+          
+          <div class="card-content">
+            <div class="row">
+              <div class="col s10 m10 l10">
+                <span class="card-title"><%= r.res_name %></span>
+                <span class='chip'><%= r.category.name %></span>
+                
+              </div>
+              <div class="col s2 m2 l2">
+                <span class='right'><%= link_to ('<i class="small material-icons">expand_more</i>'.html_safe), restaurant_path(r) %></span>
+              </div>
+            </div>
+            <p><%= r.res_description.truncate(50, :omission=> ".....continued") %></p>
+          </div>  
+        </div>
+      </div>
+  <% end %>
+</div>

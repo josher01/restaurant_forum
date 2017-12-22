@@ -57,9 +57,21 @@ main {
   margin: 0 auto;
 }
 
+.card{
+
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+
+
 .card-img img {
-    width: 100%;
-    height: 180px;
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+
 }
 
 .logo {
@@ -75,14 +87,7 @@ main {
   margin: 0 auto;
 }
 
-.card{
 
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 4px;
-  margin-bottom: 20px;
-
-}
 
 .res-desc-show {
   font-size: 25px;
