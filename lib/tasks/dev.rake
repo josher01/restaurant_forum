@@ -17,7 +17,7 @@ namespace :dev do
   
   task fake_user: :environment do
     20.times do |i|
-      user_name = FFaker::Name.first_name
+      user_name = FFaker::Name.unique.first_name
       User.create!(email: "#{user_name}@example.com",
         password: "123456"
       )
