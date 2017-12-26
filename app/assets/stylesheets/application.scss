@@ -98,11 +98,24 @@ main {
   height: 15rem;
   border-radius: 50%;
 }
-.card-panel {
-  padding: 3px;
+.profile-panel {
+  padding: 0px;
   margin: 10px;
+  border: 1px solid;
+  border-color: #E1E1E1;
   border-radius: 10%;
   overflow: hidden;
 }
 
+.card-panel {
+  border: 2px;
+  border-color: #E1E1E1;
+  padding: 0px;
+  margin: 0px;
+}
 
+.card-header {
+  background-color: #E1E1E1;
+  padding: 0px;
+  margin: 0px;
+}
