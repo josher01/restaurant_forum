@@ -16,8 +16,8 @@
         <% if user_signed_in? %>
            <li><%= link_to 'Profile' , user_path(current_user) %></li>
            <li><%= link_to 'Log Out' , destroy_user_session_path , method: :delete %></li>
-           <li><%= link_to 'Admin Dashboard' , admin_restaurants_path if current_user.admin? %></li>
-           <li><%= link_to 'Back to Front End' , restaurants_path if current_user.admin? %></li>
+           <li><%= link_to 'Admin Dashboard' , admin_restaurants_path if (current_user.admin?) %></li>
+           <li><%= link_to 'Back to Front End' , restaurants_path if (current_user.admin?) %></li>
         <% else %>
            <li><%= link_to 'Sign In' , new_user_session_path %></li>
            <li><%= link_to 'Sign Up' , new_user_registration_path %></li>
@@ -27,7 +27,7 @@
       <nav>
         <div class="nav-wrapper">
           <div class='logo'>
-             <a href="#!" class="brand-logo">EZfood</a>
+             <%= link_to 'EZfood', restaurants_path, class: "brand-logo" %>
           </div>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
