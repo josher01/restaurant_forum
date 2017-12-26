@@ -1,0 +1,25 @@
+<div class="row">
+  <div class='col s12 m6 offset-m3 l6 offset-l3 '>
+    <%= form_for @user do |f| %>
+      <div class="input-field">
+        <%= f.text_field :name , class: 'validate'%>
+        <%= f.label :name, "使用者名稱", class: 'active' %>
+      </div>
+
+      <div class="input-field">
+        <%= f.text_area :intro, class: 'materialize-textarea' %>
+        <%= f.label :intro, "自我介紹", class: 'active' %>
+      </div>
+
+       <div class="input-field">
+        <%= f.file_field :avatar,  class: 'validate' %><br/><br/>
+        <%= f.label :avatar, "上傳大頭照", class: 'active' %>
+      </div>
+
+      <div>
+        <%= f.submit "提交", class: "btn waves-effect waves-light" %>
+        <%= link_to "Cancel", user_path(@user), class: "btn waves-effect waves-light" %>
+      </div>
+    <% end %>
+  </div>
+</div>

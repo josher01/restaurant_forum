@@ -93,7 +93,16 @@ main {
   font-size: 25px;
 }
 
-
-
+#avatar-pic img{
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+}
+.card-panel {
+  padding: 3px;
+  margin: 10px;
+  border-radius: 10%;
+  overflow: hidden;
+}
 
 

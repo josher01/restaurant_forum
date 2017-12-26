@@ -4,4 +4,5 @@ class Restaurant < ApplicationRecord
   max_paginates_per 10
   belongs_to :category
   has_many :comments
+  has_many :users, through: :comments
 end
