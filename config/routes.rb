@@ -3,6 +3,13 @@ Rails.application.routes.draw do
   
   resources :restaurants , only: [:show, :index] do
     resources :comments, only: [:create,:show, :destroy]
+    collection do
+      get :feeds
+    end
+
+    member do
+      get :dashboard
+    end
   end
 
   resources :categories , only: [:show]
