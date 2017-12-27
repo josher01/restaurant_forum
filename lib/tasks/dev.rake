@@ -1,21 +1,16 @@
 namespace :dev do
-  task fake_restaurant: :environment do
-    
-
-    Restaurant.where("photo = ?", nil).each do |restaurant|
-      photo_list = [
-      {photo: "https://images.unsplash.com/photo-1494346480775-936a9f0d0877?auto=format&fit=crop&w=1003&q=80"},
-      {photo: "https://images.unsplash.com/photo-1505826759037-406b40feb4cd?auto=format&fit=crop&w=1052&q=80"},
-      {photo: "https://images.unsplash.com/photo-1505275350441-83dcda8eeef5?auto=format&fit=crop&w=967&q=80"},
-      {photo: "https://images.unsplash.com/photo-1504940892017-d23b9053d5d4?auto=format&fit=crop&w=944&q=80"},
-      {photo: "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=1050&q=80"}
-    ]
-      restaurant.update!(
-       remote_photo_url: photo_list[:photo].all.sample
+  task fake_restaurant: :environment do   
+    Restaurant.destroy_all
+    500.times do |i|
+      Restaurant.create!(res_name: FFaker::Name.first_name,
+        res_opening_hours: FFaker::Time.datetime,
+        res_tel: FFaker::PhoneNumber.short_phone_number,
+        res_address: FFaker::Address.street_address,
+        res_description: FFaker::Lorem.paragraph
       )
     end
     puts "have created fake restaurants"
-
+    puts "now you have #{Restaurant.count} restaurants data"
   end
   
   task fake_user: :environment do

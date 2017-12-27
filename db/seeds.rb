@@ -24,5 +24,6 @@ category_list.each do |category|
   Category.create( name: category[:name] )
 end
 puts "Category created!"
-Restaurants photo
 
+
+User.create(email: "admin@ezfood.com", password: "ezfoodadmin", role: "admin", name: "Josh")
