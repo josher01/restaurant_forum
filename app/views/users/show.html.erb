@@ -24,21 +24,20 @@
     <%= @user.restaurants.count %>家已評論餐廳
   </div>
 
-<div class="row">
-  <% @user.restaurants.each do |restaurant| %>
-    <div class="col s6 m3 l2">
-      <div class="profile-panel">
-        <%= image_tag restaurant.photo, alt: 'pic' ,class: 'responsive-img'  %>    
-        <div class="profile-title center">
-          <%= link_to restaurant_path(restaurant) do %>
-            <%= restaurant.res_name %>
-          <% end %>
-        </div> 
+  <div class="row">
+    <% @user.restaurants.each do |restaurant| %>
+      <div class="col s6 m3 l2">
+        <div class="profile-panel">
+          <%= image_tag restaurant.photo, alt: 'pic' ,class: 'responsive-img'  %>    
+          <div class="profile-title center">
+            <%= link_to restaurant_path(restaurant) do %>
+              <%= restaurant.res_name %>
+            <% end %>
+          </div> 
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
-
+    <% end %>
+  </div>
 </div>
 
 

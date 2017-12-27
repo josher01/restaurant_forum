@@ -8,6 +8,9 @@ class RestaurantsController < ApplicationController
   end
   def show
     @comment = Comment.new
+    
+      
+    
   end
 
   private

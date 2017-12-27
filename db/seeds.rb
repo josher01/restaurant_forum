@@ -25,3 +25,6 @@ category_list.each do |category|
 end
 puts "Category created!"
 
+#Restaurants photo
+
+
