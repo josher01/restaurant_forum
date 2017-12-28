@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col s12 m6 l6">
+      <div class="feeds-box">
+        <h4 style="color: #536D79;">新進餐廳</h4> 
+        <hr style="border:2px solid #ED6D72;">   
+        <% @recent_rests.each do |r| %>
+          <p class='name-title'><%= r.res_name %></p>
+          <div class='chip'><%= r.category.name %></div>
+          <p><%= r.res_description %></p>
+          <p><%= r.res_opening_hours %></p>
+          <p><%= r.res_tel %></p>
+          <hr color="#E1E1E1">
+           
+        <% end %>
+      </div>
+    </div>
+        
+    <div class="col s12 m6 l6">
+      <div class="feeds-box">
+        <h4 style="color: #536D79;">最新評論</h4> 
+        <hr style="border:2px solid #ED6D72;">     
+        <% @recent_comments.each do |c| %>
+          <p class='name-title'><%= c.restaurant.res_name %></p>
+          <p><%= c.content %></p>
+          <hr color="#E1E1E1">
+        <% end %>
+      </div>
+    </div>
+</div>
