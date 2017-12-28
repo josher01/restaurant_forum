@@ -9,7 +9,10 @@ class RestaurantsController < ApplicationController
 
   def show
     @comment = Comment.new
+    @rest_comments = @rest.comments.count
   end
+
+ 
 
   def feeds
     @recent_rests = Restaurant.order(created_at: :desc).limit(10)

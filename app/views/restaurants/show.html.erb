@@ -39,7 +39,20 @@
     </div>
     
     <div class="col s12 m5 l5 res-desc-show">  
-        <%= @rest.res_description %>
+        <div><%= @rest.res_description %></div>
+        <div id="dashbutton"><a class="waves-effect waves-light btn modal-trigger " href="#modal1">Dashboard</a></div>
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+            <ul>
+              <li>有 <%= @rest.comments.count %> 筆評論</li>
+              <li>這家餐廳的平均價位為 $XXX</li>
+              <li>有 XX 人收藏這家餐廳</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+          </div>
+        </div>
     </div>
   </div>
 
