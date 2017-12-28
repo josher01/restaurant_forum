@@ -35,8 +35,9 @@
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">   
             <!-- Dropdown Trigger -->
-            <%= link_to '餐廳動態', feeds_restaurants_path, class: 'right'  %>
-            <% if user_signed_in? %>             
+            
+            <% if user_signed_in? %>       
+              <%= link_to '餐廳動態', feeds_restaurants_path, class: 'right'  %>      
               <li><a class="dropdown-button" href="#" data-activates="dropdown1">Welcome, <%= current_user.name %><i class="material-icons right">arrow_drop_down</i></a></li>        
             <% else %>
               <li><a class="dropdown-button" href="#" data-activates="dropdown1"> Guest <i class="material-icons right">arrow_drop_down</i></a></li>
