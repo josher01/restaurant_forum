@@ -10,6 +10,11 @@ Rails.application.routes.draw do
     member do
       get :dashboard
     end
+
+    member do
+      post :favorite
+      post :unfavorite
+    end
   end
 
   resources :categories , only: [:show]
