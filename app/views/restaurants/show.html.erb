@@ -30,7 +30,22 @@
           <% end %>   
         </div>
         <div class="card-content">
-          <span class="card-title"><%= @rest.res_name %></span><br/>
+          <span class="card-title">
+            <%= @rest.res_name %>
+            <% if @rest.is_favorited?(current_user) %>
+              <span class="right">
+                <%= link_to favorite_restaurant_path, method: :post do %>
+                  <i class="medium material-icons">favorite</i>
+                <% end %>
+              </span>
+            <% else %>
+              <span class="right">
+                <%= link_to unfavorite_restaurant_path, method: :post do %>
+                  <i class="medium material-icons">favorite_border</i>
+                <% end %>
+              </span>
+            <% end %>
+          </span><br/>
           <p >地址: <%= @rest.res_address %></p>
           <p >電話: <%= @rest.res_tel %></p>
           <p >營業時間: <%= @rest.res_opening_hours %></p>
@@ -40,7 +55,9 @@
     
     <div class="col s12 m5 l5 res-desc-show">  
         <div><%= @rest.res_description %></div>
-        <div id="dashbutton"><a class="waves-effect waves-light btn modal-trigger " href="#modal1">Dashboard</a></div>
+        <div id="dashbutton"><a class="waves-effect waves-light btn modal-trigger " href="#modal1">Dashboard</a>
+        </div>
+
         <div id="modal1" class="modal">
           <div class="modal-content">
             <ul>
