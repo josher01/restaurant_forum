@@ -16,5 +16,9 @@ class User < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
   has_many :favorited_restaurants, through: :favorites , source: :restaurant
+  has_many :liked_restaurants, through: :likes, source: :likeable, source_type: "Restaurant"
+  has_many :liked_comments, through: :likes, source: :likeable, source_type: "Comment"
+
+
 
 end

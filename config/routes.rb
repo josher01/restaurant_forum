@@ -2,7 +2,13 @@ Rails.application.routes.draw do
   devise_for :users 
   
   resources :restaurants , only: [:show, :index] do
-    resources :comments, only: [:create,:show, :destroy]
+    resources :comments, only: [:create,:show, :destroy] do
+      member do
+        post :like
+        post :unlike
+      end
+    end
+
     collection do
       get :feeds
     end
@@ -11,6 +17,8 @@ Rails.application.routes.draw do
       get :dashboard
       post :favorite
       post :unfavorite
+      post :like
+      post :unlike
     end
   end
 
