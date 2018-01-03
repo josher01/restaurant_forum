@@ -32,19 +32,7 @@
         <div class="card-content">
           <span class="card-title">
             <%= @rest.res_name %>
-            <% if @rest.is_favorited?(current_user) %>
-              <span class="right">
-                <%= link_to favorite_restaurant_path, method: :post do %>
-                  <i class="medium material-icons">favorite</i>
-                <% end %>
-              </span>
-            <% else %>
-              <span class="right">
-                <%= link_to unfavorite_restaurant_path, method: :post do %>
-                  <i class="medium material-icons">favorite_border</i>
-                <% end %>
-              </span>
-            <% end %>
+            <%= render partial: "share/favorite-button", locals: {object: @rest} %>
           </span><br/>
           <p >地址: <%= @rest.res_address %></p>
           <p >電話: <%= @rest.res_tel %></p>
