@@ -5,15 +5,12 @@ class RestaurantsController < ApplicationController
   def index
     @rests = Restaurant.order(:created_at).page(params[:page]).per(9)
     @categories = Category.all
- 
   end
 
   def show
     @comment = Comment.new
     @rest_comments = @rest.comments.count
   end
-
- 
 
   def feeds
     @recent_rests = Restaurant.order(created_at: :desc).limit(10)
@@ -46,10 +43,13 @@ class RestaurantsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  def ranking
+    @ranking_rests = Restaurant.count_favorites.order(favorite_count: :desc).limit(10)
+  end
+
   private
   def find_rest_id
     @rest = Restaurant.find(params[:id])
   end
-
  
 end
