@@ -1,4 +1,25 @@
-<% @ranking_rests.each do |r| %>
-  <%= r.res_name %>
-<% end %>
+<div><h2>Top 10 人氣餐廳 <small style="color: #536D79;">(收藏數最高)</small></h2></div>
+<hr style="border:2px solid #ED6D72;"> 
+<br/>
 
+<% @ranking_rests.each do |r| %>
+  <div class="row top-ranking">
+    <div class="col s12 m4 l4">
+      <% if r.photo? %>
+        <%= image_tag r.photo, class: "responsive-img" %>
+      <% else %>
+        <% x= rand(5) %>
+        <%= photo_generator(x) %>
+      <% end %>
+    </div>
+    <div class="col s12 m8 l8">
+      <h5><%= r.res_name %><span class="chip">收藏人數<%= r.favorites.count %></span></h5>
+      <%= r.res_description %>
+      <br/>
+      <div class="left bottom">
+        <%= render partial: "share/favorite-button", locals: {object: r} %>
+        <%= link_to ('<i class="small material-icons">expand_more</i>'.html_safe), restaurant_path(r) %>
+      </div>    
+    </div>
+  </div>
+<% end %>
