@@ -24,16 +24,19 @@
           <div class="card-content">
             <div class="row">
               <div class="col s7 m7 l7">
-                <span class="card-title"><%= r.res_name %></span>
+                <span class="card-title"><%= link_to r.res_name,restaurant_path(r), class: "link-title"  %>
+                </span>
                 <span class='chip'><%= r.category.name %></span>
               </div>
               <div class="col s5 m5 l5">
-                <span class='right'><%= link_to ('<i class="small material-icons">expand_more</i>'.html_safe), restaurant_path(r) %><%= render partial: "share/favorite-button", locals: {object: r} %>
-                </span>                
-              </div>
+                <div class='row'><%= render partial: "share/favorite-button", locals: {object: r} %>
+                </div>     
+                <div class="row">
+                  <%= render partial: "share/res-like-button", locals: {object: r} %>
+                </div>  
+              </div>        
             </div>
             <p><%= r.res_description.truncate(70, :omission=> ".....") %></p>
-
           </div>  
         </div>
       </div>

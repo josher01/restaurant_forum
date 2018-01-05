@@ -1,0 +1,15 @@
+<% if comment.is_liked?(current_user)%>
+  <span class="right">
+    <%= link_to unlike_restaurant_comment_path(@rest,comment), method: :post do %>
+      <i class="material-icons">thumb_up</i><span class="small"><%= comment.likers.count %></span>
+    <% end %>
+  </span>
+<% else %>
+  <span class="right">
+    <%= link_to like_restaurant_comment_path(@rest,comment), method: :post do %>
+      <i class="material-icons">thumb_up</i><span class="small"><%= comment.likers.count %></span>
+    <% end %>
+  </span>
+<% end %>
+
+

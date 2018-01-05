@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :find_rest_id, only: [:show]
+  
 
   def index
     @rests = Restaurant.order(:created_at).page(params[:page]).per(9)
@@ -29,6 +30,19 @@ class RestaurantsController < ApplicationController
     @rest = Restaurant.find(params[:id])
     favorite = Favorite.where(restaurant: @rest, user: current_user)
     favorite.destroy_all
+    redirect_back(fallback_location: root_path)
+  end
+
+  def like
+    @rest = Restaurant.find(params[:id])
+    Like.create(likeable: @rest, user_id: current_user.id)
+    redirect_back(fallback_location: root_path)
+  end
+
+  def unlike
+    @rest = Restaurant.find(params[:id])
+    like = Like.where(likeable: @rest, user_id: current_user.id)
+    like.destroy_all
     redirect_back(fallback_location: root_path)
   end
 

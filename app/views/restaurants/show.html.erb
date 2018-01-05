@@ -68,7 +68,7 @@
       <% @rest.comments.each do |comment| %>
         <div>
           <h5><%= comment.user.email.split("@").first %></h5>
-          <p><%= simple_format comment.content %></p>
+          <p><%= simple_format comment.content %><%= render partial: "share/comment-like-button", locals: {comment: comment} %></p>
           <p><%= time_ago_in_words(comment.created_at) + " ago" %>
           <% if (comment.user == current_user) || current_user.admin? %>
             <span><%= link_to '  Delete', restaurant_comment_path(@rest,comment), method: :delete, data: {confirm: "Are you sure ? "} %></span>
@@ -87,7 +87,7 @@
           <i class="material-icons prefix">account_circle</i>
           <%= comment.text_area :content , class: 'validate', placeholder: '留個言吧' %>
           <span><%= comment.submit '新增評論' %></span>
-          <span><%= comment.button "Cancel", type: :reset %></span>
+          <span><%= comment.button "Cancel", type: :reset %></span>      
         </div>
       <% end %>
     </div>

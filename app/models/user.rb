@@ -19,6 +19,4 @@ class User < ApplicationRecord
   has_many :liked_restaurants, through: :likes, source: :likeable, source_type: "Restaurant"
   has_many :liked_comments, through: :likes, source: :likeable, source_type: "Comment"
 
-
-
 end
