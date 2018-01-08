@@ -1,5 +1,5 @@
 class Restaurant < ApplicationRecord
-  validates_presence_of :res_name, :res_opening_hours, :res_tel, :res_address, :res_description, :category_id
+  validates_presence_of :res_name, :res_opening_hours, :res_tel, :res_address, :res_description, :category_id, :favorite_count
   mount_uploader :photo, PhotoUploader
   max_paginates_per 10
   belongs_to :category
@@ -10,6 +10,8 @@ class Restaurant < ApplicationRecord
   has_many :favorited_users, through: :favorites , source: :user
   has_many :likes, as: :likeable
   has_many :likers, through: :likes, source: :user
+  
+ 
 
   def is_favorited?(user)
     self.favorited_users.include?(user)
@@ -19,9 +21,8 @@ class Restaurant < ApplicationRecord
     self.likers.include?(user)
   end
 
-  def count_favorites
-    self.favorite_count = self.favorited_users.count
-    self.save
-  end
+
+
+
 
 end
