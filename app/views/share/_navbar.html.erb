@@ -1,42 +1,38 @@
  <!-- Dropdown Structure -->
 
-      <ul id="dropdown1" class="dropdown-content">
-        <% if user_signed_in? %>
-           <li><%= link_to 'Profile' , user_path(current_user) %></li>
-           <li><%= link_to 'Log Out' , destroy_user_session_path , method: :delete %></li>
-           <li><%= link_to 'Admin Dashboard' , admin_restaurants_path if current_user.admin? %></li>
-           <li><%= link_to 'Back to Front End' , restaurants_path if current_user.admin? %></li>
-        <% else %>
-           <li><%= link_to 'Sign In' , new_user_session_path %></li>
-           <li><%= link_to 'Sign Up' , new_user_registration_path %></li>
-        <% end %>
-      </ul>
-      
+<ul id="dropdown1" class="dropdown-content">
+  <% if user_signed_in? %>
+     <li><%= link_to 'Profile' , user_path(current_user) %></li>
+     <li><%= link_to 'Log Out' , destroy_user_session_path , method: :delete %></li>
+     <li><%= link_to 'Admin Dashboard' , admin_restaurants_path if current_user.admin? %></li>
+     <li><%= link_to 'Back to Front End' , restaurants_path if current_user.admin? %></li>
+  <% else %>
+     <li><%= link_to 'Sign In' , new_user_session_path %></li>
+     <li><%= link_to 'Sign Up' , new_user_registration_path %></li>
+  <% end %>
+</ul>
 
-      <ul id="dropdown2" class="dropdown-content">
-        <% if user_signed_in? %>
-           <li><%= link_to 'Profile' , user_path(current_user) %></li>
-           <li><%= link_to 'Log Out' , destroy_user_session_path , method: :delete %></li>
-           <li><%= link_to 'Admin Dashboard' , admin_restaurants_path if (current_user.admin?) %></li>
-           <li><%= link_to 'Back to Front End' , restaurants_path if (current_user.admin?) %></li>
-           
-        <% else %>
-           <li><%= link_to 'Sign In' , new_user_session_path %></li>
-           <li><%= link_to 'Sign Up' , new_user_registration_path %></li>
-           
-        <% end %>
-      </ul>
+<ul id="dropdown2" class="dropdown-content">
+  <% if user_signed_in? %>
+     <li><%= link_to 'Profile' , user_path(current_user) %></li>
+     <li><%= link_to 'Log Out' , destroy_user_session_path , method: :delete %></li>
+     <li><%= link_to 'Admin Dashboard' , admin_restaurants_path if (current_user.admin?) %></li>
+     <li><%= link_to 'Back to Front End' , restaurants_path if (current_user.admin?) %></li>   
+  <% else %>
+     <li><%= link_to 'Sign In' , new_user_session_path %></li>
+     <li><%= link_to 'Sign Up' , new_user_registration_path %></li>
+  <% end %>
+</ul>
       
-      <nav>
-        <div class="nav-wrapper">
+<nav class="brown darken-3">
+    <div class="nav-wrapper container">
           <div class='logo'>
              <%= link_to 'EZfood', restaurants_path, class: "brand-logo" %>
           </div>
-
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">   
             <!-- Dropdown Trigger -->
-            <li><%= link_to '人氣餐廳', ranking_restaurants_path %>
+            <li><%= link_to '人氣餐廳', ranking_restaurants_path %></li>
             <li><%= link_to '餐廳動態', feeds_restaurants_path %></li>     
             <% if user_signed_in? %>          
               <li><a class="dropdown-button" href="#" data-activates="dropdown1">Hi, <%= current_user.name %><i class="material-icons right">arrow_drop_down</i></a></li>        
@@ -44,18 +40,15 @@
               <li><a class="dropdown-button" href="#" data-activates="dropdown1">Hi, Guest <i class="material-icons right">arrow_drop_down</i></a></li>
             <% end %>
           </ul>
-    
           <ul class='side-nav' id='mobile-demo'>
             <!-- Dropdown Trigger -->
-            <li><%= link_to '人氣餐廳', ranking_restaurants_path %>
-            <li><%= link_to '餐廳動態', feeds_restaurants_path %>
+            <li><%= link_to '人氣餐廳', ranking_restaurants_path %></li>
+            <li><%= link_to '餐廳動態', feeds_restaurants_path %></li>
             <% if user_signed_in? %>
               <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Hi, <%= current_user.name %><i class="material-icons right">arrow_drop_down</i></a></li>
             <% else %>
               <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Hi, Guest <i class="material-icons right">arrow_drop_down</i></a></li>
             <% end %>
           </ul>
-
-
-        </div>
-      </nav>
+    </div>
+</nav>

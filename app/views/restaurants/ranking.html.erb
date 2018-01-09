@@ -16,8 +16,7 @@
       <h5><%= r.res_name %>
         <span class="chip">收藏人數<%= r.favorite_count %></span>
       </h5>
-      <%= r.res_description %>
-      <br/>
+      <%= r.res_description %><br/>
       <div class="left">
         <%= render partial: "share/favorite-button", locals: {object: r} %>
         <%= link_to ('<i class="small material-icons">expand_more</i>'.html_safe), restaurant_path(r) %>
