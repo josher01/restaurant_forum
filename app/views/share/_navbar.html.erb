@@ -35,7 +35,13 @@
             <li><%= link_to '人氣餐廳', ranking_restaurants_path %></li>
             <li><%= link_to '餐廳動態', feeds_restaurants_path %></li>     
             <% if user_signed_in? %>          
-              <li><a class="dropdown-button" href="#" data-activates="dropdown1"><%= image_tag current_user.avatar, class: "resposive-img circle avatar-small"%>&nbsp;&nbsp;Hi, <%= current_user.name %><i class="material-icons right">arrow_drop_down</i></a></li>        
+              <li><a class="dropdown-button" href="#" data-activates="dropdown1">
+                <% if current_user.avatar? %>
+                  <%= image_tag current_user.avatar , alt: 'pic', class: 'responsive-img circle avatar-small' %>
+                <% else %>
+                  <%= image_tag "http://pic139.nipic.com/file/20170901/8286372_160316069799_2.jpg" , alt: 'pic', class: 'responsive-img circle avatar-small' %>
+                <% end %>
+                  &nbsp;&nbsp;Hi, <%= current_user.name %><i class="material-icons right">arrow_drop_down</i></a></li>        
             <% else %>
               <li><a class="dropdown-button" href="#" data-activates="dropdown1">Hi, Guest <i class="material-icons right">arrow_drop_down</i></a></li>
             <% end %>
