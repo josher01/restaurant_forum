@@ -38,4 +38,20 @@ namespace :dev do
     puts "now you have #{Comment.count} comments data"
   end
 
+   #fake favorite
+  task fake_favorite: :environment do
+    Favorite.destroy_all
+    puts "creating fake favorites..." 
+    User.all.each do |u|
+     20.times do
+       u.favorites.create!(
+        restaurant: Restaurant.all.sample,
+       )      
+     end     
+    end
+    puts "now you have fake #{Favorite.count} favorited restaurants"
+  end 
+
+
+
 end

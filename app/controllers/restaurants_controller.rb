@@ -44,7 +44,7 @@ class RestaurantsController < ApplicationController
   end
 
   def ranking
-    @ranking_rests = Restaurant.order(favorite_count: :desc).limit(10)
+    @ranking_rests = Restaurant.where.not(favorite_count: nil).order(favorite_count: :desc).limit(10)
   end
 
   private

@@ -1,13 +1,13 @@
 <% if object.is_favorited?(current_user) %>
   <span class="right">
     <%= link_to unfavorite_restaurant_path(object), method: :post do %>
-      <i class="material-icons">favorite</i>
+      <i class="material-icons">favorite</i><%= object.favorite_count%>
     <% end %>
   </span>
 <% else %>
   <span class="right">
     <%= link_to favorite_restaurant_path(object), method: :post do %>
-      <i class="material-icons">favorite_border</i>
+      <i class="material-icons">favorite_border</i><%= object.favorite_count%>
     <% end %>
   </span>
 <% end %>
