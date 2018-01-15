@@ -1,5 +1,5 @@
 class FollowshipsController < ApplicationController
-  
+
   def create
     @followship = current_user.followships.build(following_id: params[:following_id])
     if @followship.save
@@ -12,5 +12,9 @@ class FollowshipsController < ApplicationController
   end
 
   def destroy
+    @followship = current_user.followships.where(following_id: params[:following_id]).first
+    @followship.destroy
+    flash[:alert] = "Followship destroyed"
+    redirect_back(fallback_location: root_path)
   end
 end
