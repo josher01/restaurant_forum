@@ -1,6 +1,7 @@
-<div class="row">
+<div class="devise-container">
+  <div class="row">
   <div class='col s12 m8 offset-m2 l8 offset-l2'>
-      <h2 class='devise-title'>Sign up</h2>
+      <h3 class='devise-title center'>用戶註冊</h3><br/>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render 'share/devisemsg' %>
         
@@ -25,11 +26,11 @@
         </div>
       
         <div class="actions">
-          <%= f.submit "Sign up", class: 'btn waves-effect waves-light' %>
-          <span class= "right"><%= render "devise/shared/links" %></span>
-
+          <div class="left"><%= f.submit "Sign up", class: 'btn waves-effect waves-light' %></div>
+          <div class= "right"><%= render "devise/shared/links" %></div>
         </div>
       <% end %>
+  </div>
   </div>
 </div>
         

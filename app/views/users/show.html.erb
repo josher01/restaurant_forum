@@ -17,6 +17,8 @@
         <span><i class="material-icons right">edit</i>編輯Profile</span>
       <% end %>
     <% end %>
+
+    <%= render partial: "share/follow", locals: {user: @user} %>
   </div>
 </div>
 
@@ -27,14 +29,14 @@
 
 <div class="card-panel">
   <div class="card-header">
-    <h5><%= @user.restaurants.count %>家已評論餐廳</h5>
+    <h5 class="center"><strong><%= @user.restaurants.count %>家已評論餐廳</strong></h5>
   </div>
 
   <div class="row">
     <% @user.restaurants.each do |restaurant| %>
       <div class="col m2 l2">
         <div class="profile-panel">
-          <div class="center-align">
+          <div class="profile-img center-align">
             <% if restaurant.photo? %>
               <%= image_tag restaurant.photo, alt: 'pic' ,class: 'responsive-img'  %> 
             <% else %>

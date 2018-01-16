@@ -1,7 +1,7 @@
-
-<div class="row">
-  <div class='col s12 m8 offset-m2 l8 offset-l2'>
-    <h2 class='devise-title'>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="devise-container">
+  <div class="row">
+    <div class='col s12 m8 offset-m2 l8 offset-l2'>
+    <h3 class='devise-title center'>帳戶編輯 <%= resource_name.to_s.humanize %></h3><br/>
     
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
      <%= render 'share/devisemsg' %>
@@ -49,3 +49,5 @@
     <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>         </p>
     
     <%= link_to "Back", :back %>
+  </div>
+</div>
