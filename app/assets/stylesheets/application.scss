@@ -37,8 +37,6 @@ main {
 }
 
 
-
-
 .row {
   margin: 0 auto;
 }
@@ -82,7 +80,6 @@ main {
   border: 1px solid;
   border-color: #E1E1E1;
   border-radius: 10%;
-  overflow: hidden;
 }
 
 .card-panel {
@@ -162,8 +159,22 @@ main {
   color: white;
 }
 
+
+
 .fa-youtube {
   background: #bb0000;
   color: white;
 }
+/* Followers panel setting */
+.follow-panel {
+  margin: 2rem;
+}
+
+.follow-avatar img{
+  height: auto;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 20%;
+}
+
 

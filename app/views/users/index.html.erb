@@ -1,8 +1,21 @@
-<ul> 
+
+<div class="row">
   <% @users.each do |user| %>
-  <li>
-    <%= user.name %>
-    <%= render partial: "share/follow" , locals: {user: user} %>
-  </li>
+    <div class="col s6 m4 l3">
+      <div class="follow-panel">
+        <div class="follow-avatar">
+          <% if user.avatar? %>
+            <%= image_tag user.avatar, alt: "photo" , class: "responsive-img center" %>
+          <% else %>
+            <%= image_tag "http://via.placeholder.com/300x300", class: "responsive-img center" %>
+          <% end %>
+        </div>
+        <div class="follow-content">
+          <div class="center-align"><%= link_to user.name, user_path(user), class: "blue-text" %></div>
+          <div class="center-align"><%= render partial: "share/follow" , locals: {user: user} %></div>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
+
