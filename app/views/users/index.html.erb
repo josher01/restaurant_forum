@@ -6,7 +6,8 @@
           <% if user.avatar? %>
             <%= image_tag user.avatar, alt: "photo" , class: "responsive-img center" %>
           <% else %>
-            <%= image_tag "http://via.placeholder.com/300x300", class: "responsive-img center" %>
+            <% x= rand(7) %>
+            <%= avatar_generator(x) %>
           <% end %>
         </div>
         <div class="follow-content">

@@ -12,4 +12,24 @@ module ApplicationHelper
       image_tag "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=1050&q=80", class: "responsive-img"
     end
   end
+
+  def avatar_generator(x)
+    if x == 0
+      image_tag "https://pickaface.net/gallery/avatar/unr_sample_161118_2054_ynlrg.png", class: "responsive-img"
+    elsif x == 1
+      image_tag "https://pickaface.net/gallery/avatar/20160303_155723_4728_Pablo.png", class: "responsive-img"
+    elsif x == 2
+      image_tag "https://pickaface.net/gallery/avatar/20140304_222239_3444_jail.png", class: "responsive-img"
+    elsif x == 3
+      image_tag "https://pickaface.net/gallery/avatar/20130211_084453_4162_Jeff.png", class: "responsive-img"
+    elsif x == 4
+      image_tag "https://pickaface.net/gallery/avatar/20141014_233058_2523_CarsonJr.png", class: "responsive-img"
+    elsif x == 5
+      image_tag "https://pickaface.net/gallery/avatar/unr_elizabeth_170922_0009_zbii0.png", class: "responsive-img"
+    elsif x == 6
+      image_tag "https://pickaface.net/gallery/avatar/unr_susan_171105_1538_gi.png", class: "responsive-img"
+    else
+      image_tag "https://pickaface.net/gallery/avatar/20121023_152128_1823_gasperin.png", class: "responsive-img"
+    end
+  end
 end

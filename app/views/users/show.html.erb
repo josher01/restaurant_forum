@@ -4,7 +4,8 @@
     <% if @user.avatar? %>
       <%= image_tag @user.avatar , alt: 'pic', class: 'responsive-img circle' %>
     <% else %>
-      <%= image_tag "http://pic139.nipic.com/file/20170901/8286372_160316069799_2.jpg" , alt: 'pic', class: 'responsive-img circle' %>
+      <% x= rand(7) %>
+      <%= avatar_generator(x) %>
     <% end %>
   </div>
   <div class="col m1 l1"></div>
