@@ -23,7 +23,9 @@
 /*sticky-footer*/
 
 
-        
+html {
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}      
 
 body {
     display: flex;
@@ -71,14 +73,14 @@ main {
 /* For tablet and desktop: */
 @media screen and (min-width: 768px) {
   .card-img img{
-    height: 11vh;
+    height: 9vh;
     width: 100%;
     border-radius: 15%;
   }
 }
 
 /* For smartphone: */
-@media screen and (min-width: 320px) and (min-width: 480px) and (min-width: 600px) {
+@media screen and (min-width: 320px) and (min-width: 480px) and (max-width: 767px) {
   .card-img img{
     max-height: auto;
     width: 100%;
@@ -112,7 +114,7 @@ main {
   margin-bottom: 3rem;
 }
 
-.avatar-small {
+.avatar-small{
   width: 30px;
   height: auto;
 }
@@ -165,14 +167,14 @@ main {
 /* Followers panel setting */
 .follow-panel {
   margin: 3em;
-  height: 180px;
+
 }
 
 .follow-avatar img{
   max-height: auto;
   width: 100%;
   margin: 0 auto;
-  border-radius: 20%;
+  
 }
 
 .btn {

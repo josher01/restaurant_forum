@@ -10,9 +10,9 @@
             <%= avatar_generator(x) %>
           <% end %>
         </div>
-        <div class="follow-content">
-          <div class="center-align"><%= link_to user.name, user_path(user), class: "blue-text" %></div>
-          <div class="center-align"><%= render partial: "share/follow" , locals: {user: user} %></div>
+        <div>
+          <div class="center-align"><%= link_to user.name, user_path(user), class: "orange-text" %></div>
+          <div class="center-align"><%= render partial: "share/follow", locals: {user: user} %></div>
         </div>
       </div>
     </div>

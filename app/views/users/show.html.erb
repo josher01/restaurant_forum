@@ -8,49 +8,88 @@
       <%= avatar_generator(x) %>
     <% end %>
   </div>
-  <div class="col m1 l1"></div>
-
-  <div class='col s12 m6 l6'>
-    <h2><%= @user.name %></h2>
-    <h4><%= @user.intro %></h4>
+  <div class="col m1 l1">
+  </div>
+  <div class='col s12 m7 l7'>
+    <h2 style="margin-top: 0;"><%= @user.name %></h2>
+    <h5><%= @user.email %></h5>
+    <h5><%= @user.restaurants.count %>家已評論餐廳 / <%= @user.favorites.count %>收藏的餐廳 / <%= @user.followers.count %> Followers / <%= @user.followings.count %> Followings </h5>
+    <h5><%= @user.intro %></h5>
     <% if @user == current_user %>
       <%= link_to edit_user_path(@user), class: 'btn waves-effect waves-light' do %>
         <span><i class="material-icons right">edit</i>編輯Profile</span>
       <% end %>
     <% end %>
-
     <%= render partial: "share/follow", locals: {user: @user} %>
   </div>
 </div>
-
-<hr/>
 <br/>
 
-
-
-<div class="card">
-  <div class="card-header">
-    <h5 class="center"><strong><%= @user.restaurants.count %>家已評論餐廳</strong></h5>
+<div class="row">
+  <div class="col s12 m4 l4"> 
+    <ul class="collection with-header" >
+      <li class="collection-header" style="background-color: #BCBDBC;"><h5 ><%= @user.name %>追蹤的美食達人</h5></li>
+      <% @user.followings.each do |following| %>
+        <li class="collection-item avatar"><span class="title"><% x= rand(7) %><%= avatar_generator(x)%><%= following.name %></span></li>
+      <% end %>
+    </ul>
+    <ul class="collection with-header" >
+      <li class="collection-header" style="background-color: #BCBDBC;"><h5 ><%= @user.name %>的粉絲</h5></li>
+      <% @user.followers.each do |follower| %>
+        <li class="collection-item avatar"><span class="title"><% x= rand(7) %><%= avatar_generator(x)%><%= follower.name %></span></li>
+      <% end %>
+    </ul> 
   </div>
-
-  <div class="row">
-    <% @user.restaurants.each do |restaurant| %>
-      <div class="col m3 l2">
-        <div class="box">
-          <div class="card-img center" >
-            <% if restaurant.photo? %>
-              <%= image_tag restaurant.photo, alt: 'pic' ,class: 'responsive-img'  %> 
-            <% else %>
-                <% x= rand(5) %>
-                <%= photo_generator(x) %>
-            <% end %>  
-          </div> 
-          <div class="center">
-            <%= link_to restaurant.res_name, restaurant_path(restaurant) %>
-          </div> 
-        </div>
+  <div class="col s12 m8 l8">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="center"><strong><%= @user.restaurants.count %>家已評論餐廳</strong></h5>
       </div>
-    <% end %>
+      <div class="row">
+        <% @user.restaurants.each do |restaurant| %>
+          <div class="col m4 l3">
+            <div class="box">
+              <div class="card-img center" >
+                <% if restaurant.photo? %>
+                  <%= image_tag restaurant.photo, alt: 'pic' ,class: 'responsive-img'  %> 
+                <% else %>
+                    <% x= rand(5) %>
+                    <%= photo_generator(x) %>
+                <% end %>  
+              </div> 
+              <div class="center">
+                <%= link_to restaurant.res_name, restaurant_path(restaurant) %>
+              </div> 
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <h5 class="center"><strong><%= @user.favorites.count %>家收藏餐廳</strong></h5>
+      </div>
+      <div class="row">
+        <% @user.favorited_restaurants.each do |restaurant| %>
+          <div class="col m4 l3">
+            <div class="box">
+              <div class="card-img center" >
+                <% if restaurant.photo? %>
+                  <%= image_tag restaurant.photo, alt: 'pic' ,class: 'responsive-img'  %> 
+                <% else %>
+                    <% x= rand(5) %>
+                    <%= photo_generator(x) %>
+                <% end %>  
+              </div> 
+              <div class="box">
+                <%= link_to restaurant.res_name, restaurant_path(restaurant) %>
+                <%= render partial: "share/favorite-button" , locals: {object: restaurant} %>
+              </div> 
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
