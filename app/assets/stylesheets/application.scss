@@ -34,6 +34,7 @@ body {
 main {
     flex: 1 0 auto;
     margin-top: 2em;
+    margin-bottom: 2em;
 }
 
 
@@ -41,19 +42,6 @@ main {
   margin: 0 auto;
 }
 
-.card{
-
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 4px;
-  margin-bottom: 20px;
-}
-
-.card-img img {
-    max-width: 100%;
-    height: auto;
-    overflow: hidden;
-}
 
 .devise-title {
   color: #455a64 ;
@@ -74,21 +62,28 @@ main {
   height: 15rem;
   border-radius: 50%;
 }
-.profile-panel {
-  padding: 0px;
-  margin: 10px;
-  border: 1px solid;
-  border-color: #E1E1E1;
-  border-radius: 10%;
+
+.box {
+  margin: 1em;
+  text-align: center;
 }
 
+/* For tablet and desktop: */
+@media screen and (min-width: 768px) {
+  .card-img img{
+    height: 11vh;
+    width: 100%;
+    border-radius: 15%;
+  }
+}
 
-.card-panel {
-  border: 2px;
-  border-color: #E1E1E1;
-  padding: 0px;
-  margin: 0px;
-
+/* For smartphone: */
+@media screen and (min-width: 320px) and (min-width: 480px) and (min-width: 600px) {
+  .card-img img{
+    max-height: auto;
+    width: 100%;
+    border-radius: 10%;
+  }
 }
 
 .card-header {
@@ -169,11 +164,12 @@ main {
 }
 /* Followers panel setting */
 .follow-panel {
-  margin: 2.5em;
+  margin: 3em;
+  height: 180px;
 }
 
 .follow-avatar img{
-  max-height: 10em;
+  max-height: auto;
   width: 100%;
   margin: 0 auto;
   border-radius: 20%;
@@ -196,3 +192,5 @@ main {
   margin: 5em auto;
   padding: 1px;
 }
+
+

@@ -27,16 +27,16 @@
 
 
 
-<div class="card-panel">
+<div class="card">
   <div class="card-header">
     <h5 class="center"><strong><%= @user.restaurants.count %>家已評論餐廳</strong></h5>
   </div>
 
   <div class="row">
     <% @user.restaurants.each do |restaurant| %>
-      <div class="col m2 l2">
-        <div class="profile-panel">
-          <div class="profile-img center-align">
+      <div class="col m3 l2">
+        <div class="box">
+          <div class="card-img center" >
             <% if restaurant.photo? %>
               <%= image_tag restaurant.photo, alt: 'pic' ,class: 'responsive-img'  %> 
             <% else %>
@@ -44,10 +44,8 @@
                 <%= photo_generator(x) %>
             <% end %>  
           </div> 
-          <div class="center-align">
-            <%= link_to restaurant_path(restaurant) do %>
-              <%= restaurant.res_name %>
-            <% end %>
+          <div class="center">
+            <%= link_to restaurant.res_name, restaurant_path(restaurant) %>
           </div> 
         </div>
       </div>
