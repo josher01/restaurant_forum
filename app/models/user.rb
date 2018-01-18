@@ -25,12 +25,26 @@ class User < ApplicationRecord
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
   has_many :followers, through: :inverse_followships, source: :user
 
+  has_many :friendships, dependent: :destroy
+  has_many :friend_receivers, through: :friendships
+
+  has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
+  has_many :friend_senders, through: :inverse_friendships, source: :user
+
   def followings?(user)
     self.followings.include?(user)
   end
 
   def followers?(user)
     self.followers.include?(user)
+  end
+
+  def friend_receivers?(user)
+    self.friend_receivers.include?(user)
+  end
+
+  def friend_senders?(user)
+    self.friend_senders.include?(user)
   end
 
 end
