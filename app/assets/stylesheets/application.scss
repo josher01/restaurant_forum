@@ -71,16 +71,16 @@ main {
 }
 
 /* For tablet and desktop: */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 601px) {
   .card-img img{
-    height: 9vh;
-    width: 100%;
+    height: 10vh;
+    width: 90%;
     border-radius: 15%;
   }
 }
 
 /* For smartphone: */
-@media screen and (min-width: 320px) and (min-width: 480px) and (max-width: 767px) {
+@media screen and (min-width: 320px) and (max-width: 600px) {
   .card-img img{
     max-height: auto;
     width: 100%;
@@ -194,5 +194,11 @@ main {
   margin: 5em auto;
   padding: 1px;
 }
+
+.img {
+  height: auto !important;
+  max-width: 100%;
+}
+
 
 
