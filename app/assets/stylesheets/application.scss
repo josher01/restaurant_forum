@@ -188,6 +188,13 @@ main {
   border-radius: 20px;
 }
 
+.btn-friend {
+  border: 1px solid;
+  padding: 5px 10px;
+  background-color: #7e57c2;
+  border-radius: 20px;
+}
+
 /* devise view container */
 .devise-container {
   width: 65%;
@@ -200,5 +207,6 @@ main {
   max-width: 100%;
 }
 
-
-
+.btn-align {
+  display: inline-block;
+}
