@@ -1,20 +1,19 @@
 <div class="row">
   <% @users.each do |user| %>
-    <div class="col s6 m4 l3">
+    <div class="col s6 m6 l4 xl4">
       <div class="follow-panel">
-        <div class="follow-avatar">
+        <div class="follow-avatar center">
           <% if user.avatar? %>
             <%= image_tag user.avatar, alt: "photo" , class: "responsive-img center" %>
           <% else %>
             <% x= rand(7) %>
             <%= avatar_generator(x) %>
           <% end %>
-        </div>
-        <div>
+        
           <div class="center-align"><%= link_to user.name, user_path(user), class: "orange-text" %></div>
-          <div class="center">
-            <div class="btn-align"><%= render partial: "share/follow", locals: {user: user} %></div>
-            <div class="btn-align"><%= render partial: "share/friend-request", locals: {user: user} %></div>
+          <div class="center-align">
+            <%= render partial: "share/follow", locals: {user: user} %>
+            <%= render partial: "share/friend-request", locals: {user: user} %>
           </div>
         </div>
       </div>

@@ -1,7 +1,1 @@
-<% unless user == current_user %>
-  <% if current_user.friends?(user) %>
-    <%= link_to 'Unfriend' , friendship_path(user) , method: :delete, class: "btn-friend white-text center" %>
-  <% else %>
-    <%= link_to 'Friend' , friendships_path(friend_id: user) , method: :post, class: "btn-friend white-text center" %>
-  <% end %>
-<% end %>
+<%= friend_status(user) %>

@@ -32,4 +32,5 @@ module ApplicationHelper
       image_tag "https://pickaface.net/gallery/avatar/20121023_152128_1823_gasperin.png", class: "responsive-img circle"
     end
   end
+
 end

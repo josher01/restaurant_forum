@@ -26,9 +26,19 @@ Rails.application.routes.draw do
   end
 
   resources :categories , only: [:show]
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update] do
+    member do
+      get :friend_list
+    end
+  end
+
   resources :followships, only: [:create, :destroy]
-  resources :friendships, only: [:create, :destroy, :confirm, :reject]
+  resources :friendships, only: [:create, :destroy] do
+    member do
+      post :accept
+      post :reject
+    end
+  end
 
   namespace :admin do
     resources :restaurants

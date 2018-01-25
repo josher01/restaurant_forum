@@ -22,22 +22,32 @@
 
 /*sticky-footer*/
 
-
-html {
-    font-family: GillSans, Calibri, Trebuchet, sans-serif;
-}      
+html, body {
+  margin:0;
+  padding:0;
+  height:100%;
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
+   
 
 body {
+    -webkit-display: flex;
+    -webkit-flex-direction: column;
+    -webkit-min-height: 100vh;
+    flex-direction: column;
     display: flex;
     min-height: 100vh;
-    flex-direction: column;
 }
 
 main {
-    flex: 1 0 auto;
     margin-top: 2em;
     margin-bottom: 2em;
+    -webkit-flex: 1 0 auto;
+    flex: 1 0 auto;
 }
+
+
+
 
 
 .row {
@@ -170,11 +180,22 @@ main {
 
 }
 
-.follow-avatar img{
-  max-height: auto;
-  width: 100%;
-  margin: 0 auto;
-  
+/* For RWD: */
+@media screen and (min-width: 601px) {
+  .follow-avatar img{
+   height: 18vh;
+   width: 60%;
+   margin: 0 auto;
+   
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 600px) {
+  .follow-avatar img{
+   max-height: auto;
+   width: 100%;
+   margin: 0 auto;
+ }
 }
 
 .btn {
@@ -202,11 +223,5 @@ main {
   padding: 1px;
 }
 
-.img {
-  height: auto !important;
-  max-width: 100%;
-}
 
-.btn-align {
-  display: inline-block;
-}
+

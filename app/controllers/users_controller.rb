@@ -20,6 +20,16 @@ class UsersController < ApplicationController
     end
   end
   
+  def friend_list
+
+      @accepted_friends = current_user.accepted_friends
+      @rejected_friends = current_user.rejected_friends
+      @unconfirmed_friends = current_user.unconfirmed_friends
+      @request_sents = current_user.friends
+
+  end
+
+
 
   private
 

@@ -1,0 +1,32 @@
+You have following friends requests to be confirmed: <br/>
+<% if @unconfirmed_friends.exists? %>
+  <% @unconfirmed_friends.each do |user| %>
+    <%= user.name %>
+    <%= link_to 'Accepted', accept_friendship_path(friend_id: user), method: :post, class: 'btn-flat' %>
+    <%= link_to 'Rejected', reject_friendship_path(friend_id: user), method: :post, class: 'btn-flat' %>
+  <% end %>
+<% else %>
+  <p>you have no friends request to confirm</p>
+<% end %>
+<br/><br/>
+
+Your confirmed friends list: <br/>
+<% @accepted_friends.each do |user| %>
+  <%= user.name %>
+<% end %>
+<br/><br/>
+
+Your have ever sent friends requests to: <br/>
+<% @request_sents.each do |user| %>
+  <%= user.name %>
+<% end %>
+<br/><br/>
+
+
+
+Folloing friends request being rejected by you: <br/>
+<% @rejected_friends.each do |user| %>
+  <%= user.name %>
+<% end %>
+
+

@@ -29,7 +29,17 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships 
 
   has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
-  has_many :senders, through: :inverse_friendships, source: :user
+  has_many :requesters, through: :inverse_friendships, source: :user
+
+  has_many :accepted_friendships, -> {where(status: "accepted")}, class_name: "Friendship", foreign_key: "friend_id"
+  has_many :accepted_friends, through: :accepted_friendships, source: :user
+
+
+  has_many :rejected_friendships, -> {where(status: "rejected")}, class_name: "Friendship", foreign_key: "friend_id"
+  has_many :rejected_friends, through: :rejected_friendships, source: :user
+
+  has_many :unconfirmed_friendships, -> {where(status: "0")}, class_name: "Friendship", foreign_key: "friend_id"
+  has_many :unconfirmed_friends, through: :unconfirmed_friendships, source: :user
 
   def followings?(user)
     self.followings.include?(user)
@@ -40,11 +50,25 @@ class User < ApplicationRecord
   end
 
   def friends?(user)
-    self.friends.include?(user)
+    self.friends.include?(user) 
   end
 
-  def senders?(user)
-    self.senders.include?(user)
+  def requesters?(user)
+    self.requesters.include?(user)
+  end
+
+  def unconfirmed_friends?(user)
+    self.unconfirmed_friends.include?(user)
+  end
+
+
+
+  def accepted_friends?(user)
+    self.accepted_friends.include?(user) 
+  end
+
+  def rejected_friends?(user)
+    self.rejected_friends.include?(user) 
   end
 
 end
