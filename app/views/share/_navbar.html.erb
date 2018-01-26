@@ -3,7 +3,6 @@
 <ul id="dropdown1" class="dropdown-content">
   <% if user_signed_in? %>
      <li><%= link_to 'Profile' , user_path(current_user) %></li>
-     <li><%= link_to 'My Friends' , friend_list_user_path(current_user) %></li>
      <li><%= link_to 'Log Out' , destroy_user_session_path , method: :delete %></li>
      <li><%= link_to 'Admin Dashboard' , admin_restaurants_path if current_user.admin? %></li>
      <li><%= link_to 'Back to Front End' , restaurants_path if current_user.admin? %></li>
@@ -16,7 +15,6 @@
 <ul id="dropdown2" class="dropdown-content">
   <% if user_signed_in? %>
      <li><%= link_to 'Profile' , user_path(current_user) %></li>
-     <li><%= link_to 'My Friends' , friend_list_user_path(current_user) %></li>
      <li><%= link_to 'Log Out' , destroy_user_session_path , method: :delete %></li>
      <li><%= link_to 'Admin Dashboard' , admin_restaurants_path if (current_user.admin?) %></li>
      <li><%= link_to 'Back to Front End' , restaurants_path if (current_user.admin?) %></li>   

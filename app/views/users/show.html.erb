@@ -16,7 +16,7 @@
     <h5><%= @user.restaurants.count %>家已評論餐廳 / <%= @user.favorites.count %>收藏的餐廳 / <%= @user.followers.count %> Followers / <%= @user.followings.count %> Followings </h5>
     <h5><%= @user.intro %></h5>
     <% if @user == current_user %>
-      <%= link_to "my friends", friend_list_user_path(@user), class: 'btn waves-effect waves-light' %>
+      <%= link_to "my friends", friend_list_friendship_path(@user), class: 'btn waves-effect waves-light' %>
       <%= link_to edit_user_path(@user), class: 'btn waves-effect waves-light' do %>
         <span><i class="material-icons right">edit</i>編輯Profile</span>
       <% end %>
@@ -30,14 +30,22 @@
   <div class="col s12 m4 l4"> 
     <ul class="collection with-header" >
       <li class="collection-header" style="background-color: #BCBDBC;"><h5 ><%= @user.name %>追蹤的美食達人</h5></li>
-      <% @user.followings.each do |following| %>
-        <li class="collection-item avatar"><span class="title"><% x= rand(7) %><%= avatar_generator(x)%><%= link_to following.name, user_path(following) %></span></li>
+      <% if @user.followings.exists? %>
+        <% @user.followings.each do |following| %>
+          <li class="collection-item avatar"><span class="title"><% x= rand(7) %><%= avatar_generator(x)%><%= link_to following.name, user_path(following) %></span></li>
+        <% end %>
+      <% else %>
+        <li class="collection-item">None</li>
       <% end %>
     </ul>
     <ul class="collection with-header" >
       <li class="collection-header" style="background-color: #BCBDBC;"><h5 ><%= @user.name %>的粉絲</h5></li>
-      <% @user.followers.each do |follower| %>
-        <li class="collection-item avatar"><span class="title"><% x= rand(7) %><%= avatar_generator(x)%><%= link_to follower.name, user_path(follower) %></span></li>
+      <% if @user.followers.exists? %>
+        <% @user.followers.each do |follower| %>
+          <li class="collection-item avatar"><span class="title"><% x= rand(7) %><%= avatar_generator(x)%><%= link_to follower.name, user_path(follower) %></span></li>
+        <% end %>
+      <% else %>
+        <li class="collection-item">None</li>
       <% end %>
     </ul> 
   </div>

@@ -62,7 +62,6 @@ class User < ApplicationRecord
   end
 
 
-
   def accepted_friends?(user)
     self.accepted_friends.include?(user) 
   end

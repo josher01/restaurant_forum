@@ -1,0 +1,48 @@
+You have following friends requests to be confirmed: <br/>
+<% if @unconfirmed_friends.exists? %>
+  <% @unconfirmed_friends.each do |user| %>
+    <%= user.name %>
+    <%= link_to 'Accepted', accept_friendship_path(friend_id: user), method: :post, class: 'btn-flat' %>
+    <%= link_to 'Rejected', reject_friendship_path(friend_id: user), method: :post, class: 'btn-flat' %>
+  <% end %>
+<% else %>
+  <p>you have no friends request to confirm</p>
+<% end %>
+<br/><br/>
+
+Your confirmed friends list: <br/>
+<% @accepted_friends.each do |user| %>
+  <%= user.name %>
+<% end %>
+<br/><br/>
+
+Your have ever sent friends requests to: <br/>
+<% @request_sents.each do |user| %>
+  <%= user.name %>
+<% end %>
+<br/><br/>
+
+
+
+Folloing friends request being rejected by you: <br/>
+<% @rejected_friends.each do |user| %>
+  <%= user.name %>
+<% end %>
+
+
+<div class="row">
+  <div class="col s12 m6 l6 center"> 
+    <ul class="collection with-header" >
+      <li class="collection-header" style="background-color: #BCBDBC;"><h5 >You have following friends requests to be confirmed:</h5></li>
+      <% if @unconfirmed_friends.exists? %>
+        <% @unconfirmed_friends.each do |user| %>
+          <li class="collection-item avatar"><span class="title"><% x= rand(7) %><%= avatar_generator(x)%><%= link_to user.name, user_path(user) %></span></li>
+          <%= link_to 'Accepted', accept_friendship_path(friend_id: user), method: :post, class: 'btn-flat' %>
+          <%= link_to 'Rejected', reject_friendship_path(friend_id: user), method: :post, class: 'btn-flat' %>
+        <% end %>
+      <% else %>
+          <li class="collection-item">You have no friends request to confirm</li>
+      <% end %>
+    </ul>
+    
+  </div>

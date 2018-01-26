@@ -13,26 +13,25 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @friendship = current_user.friendships.where(friend_id: params[:id]).first
-    @friendship_duplicate = Friendship.where({friend_id: current_user.id, user_id: params[:id]}).first
-    if !@friendship.nil?
-      @friendship.destroy
+    @friendship = current_user.friendships.where({friend_id: params[:id], status: "accepted"})
+    @inverse_friendship = current_user.inverse_friendships.where({user_id: params[:id], status: "accepted"})
+    if @friendship.exists?
+      @friendship.destroy_all
       flash[:notice] = "Friendship Cancelled!"
-      redirect_back(fallback_location: root_path)
-    elsif !@friendship_duplicate.nil?
-      @friendship_duplicate.destroy
+    elsif @inverse_friendship.exists?
+      @inverse_friendship.destroy_all
       flash[:notice] = "Friendship Cancelled!"
-      redirect_back(fallback_location: root_path)
     else
+      flash[:alert] = @friendship.errors.full_messages.to_sentence || flash[:alert] = @inverse_friendship.errors.full_messages.to_sentence
     end
+    redirect_back(fallback_location: root_path)
   end
 
   def accept
-    @friendship = Friendship.where({friend_id: current_user.id, user_id: params[:friend_id]}) 
-   
+    @friendship = current_user.inverse_friendships.where(user_id: params[:friend_id]) 
     if @friendship.update(status: "accepted")
       flash[:notice] = "Friend Request Accepted !"
-      redirect_to friend_list_user_path(current_user)
+      redirect_to friend_list_friendship_path(current_user)
     else
       flash[:alert] = @friendship.errors.full_messages.to_sentence 
       redirect_back(fallback_location: root_path)
@@ -40,18 +39,24 @@ class FriendshipsController < ApplicationController
   end
 
   def reject
-    @friendship = Friendship.where({friend_id: current_user.id, user_id: params[:friend_id]})
-    if @friendship.update(status: "rejected")
-      flash[:notice] = "Friend Request Rejected !"
-      redirect_back(fallback_location: root_path)
-    end
+    @inverse_friendship = current_user.inverse_friendships.where(user_id: params[:id])
+    @inverse_friendship.destroy_all
+    flash[:notice] = "Friend Request Rejected !"
+    redirect_back(fallback_location: root_path)
+  end
 
+  def friend_list
+      @accepted_friends = current_user.accepted_friends
+      @rejected_friends = current_user.rejected_friends
+      @unconfirmed_friends = current_user.unconfirmed_friends
+      @request_sents = current_user.friends
   end
 
   private
+
   def duplicate
-    @friendship_duplicate = Friendship.where({friend_id: current_user.id, user_id: params[:friend_id], status: "0"})
-    if @friendship_duplicate.exists?
+    @inverse_friendship = current_user.inverse_friendships.where(user_id: params[:id])
+    if @inverse_friendship.exists?
       flash[:alert] = "You already have this friend request, please confirm it !"
       redirect_back(fallback_location: root_path)
     end

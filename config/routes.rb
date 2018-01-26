@@ -26,17 +26,14 @@ Rails.application.routes.draw do
   end
 
   resources :categories , only: [:show]
-  resources :users, only: [:index, :show, :edit, :update] do
-    member do
-      get :friend_list
-    end
-  end
+  resources :users, only: [:index, :show, :edit, :update]
 
   resources :followships, only: [:create, :destroy]
   resources :friendships, only: [:create, :destroy] do
     member do
       post :accept
       post :reject
+      get :friend_list
     end
   end
 
