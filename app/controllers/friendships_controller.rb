@@ -18,11 +18,9 @@ class FriendshipsController < ApplicationController
     if @friendship.exists?
       @friendship.destroy_all
       flash[:notice] = "Friendship Cancelled!"
-    elsif @inverse_friendship.exists?
+    else @inverse_friendship.exists?
       @inverse_friendship.destroy_all
       flash[:notice] = "Friendship Cancelled!"
-    else
-      flash[:alert] = @friendship.errors.full_messages.to_sentence || flash[:alert] = @inverse_friendship.errors.full_messages.to_sentence
     end
     redirect_back(fallback_location: root_path)
   end
