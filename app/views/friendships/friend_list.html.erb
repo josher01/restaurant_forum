@@ -5,8 +5,12 @@
       <% if @unconfirmed_friends.exists? %>
         <% @unconfirmed_friends.each do |user| %>
           <li class="collection-item avatar"><span class="title"><% x= rand(7) %><%= avatar_generator(x)%><%= link_to user.name, user_path(user) %>
-          <%= link_to 'Accepted', accept_friendship_path(friend_id: user), method: :post, class: 'btn-flat' %>
-          <%= link_to 'Rejected', reject_friendship_path(friend_id: user), method: :post, class: 'btn-flat' %>
+          <%= link_to reject_friendship_path(friend_id: user), method: :post, class: 'btn-floating brown right' do %>
+            <i class="small material-icons">close</i>
+          <% end %>
+          <%= link_to accept_friendship_path(friend_id: user), method: :post, class: 'btn-floating brown right' do %>
+            <i class="small material-icons">check</i>
+          <% end %>
           </span></li>
         <% end %>
       <% else %>

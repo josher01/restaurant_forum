@@ -37,7 +37,7 @@ class FriendshipsController < ApplicationController
   end
 
   def reject
-    @inverse_friendship = current_user.inverse_friendships.where(user_id: params[:id])
+    @inverse_friendship = current_user.inverse_friendships.where(user_id: params[:friend_id])
     @inverse_friendship.destroy_all
     flash[:notice] = "Friend Request Rejected !"
     redirect_back(fallback_location: root_path)
