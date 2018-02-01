@@ -22,6 +22,7 @@
       <% end %>
     <% end %>
     <%= render partial: "share/follow", locals: {user: @user} %>
+    <%= friend_status(@user) %>
   </div>
 </div>
 <br/>
