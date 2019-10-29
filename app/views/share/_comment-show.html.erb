@@ -1,0 +1,17 @@
+<div class="row" id="comment_display">
+  <div class="col s12 m12 l12">
+    <% @rest.comments.each do |comment| %>
+      <div>
+        <h5><%= comment.user.email.split("@").first %></h5>
+        <p><%= simple_format comment.content %><%= render partial: "share/comment-like-button", locals: {comment: comment} %></p>
+        <p><%= time_ago_in_words(comment.created_at) + " ago" %>
+          <% if (comment.user == current_user) || current_user.admin? %>
+            <span><%= link_to 'Delete', restaurant_comment_path(@rest,comment), method: :delete, data: {confirm: "Are you   sure ? "} %>
+            </span>
+          <% end %>
+        </p>
+      </div>
+      <hr>
+    <% end %>
+  </div>
+</div>

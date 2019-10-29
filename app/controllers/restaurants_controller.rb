@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  before_action :authenticate_user!, only: [:favorite, :unfavorite, :like, :unlike]
   before_action :find_rest_id, only: [:show]
 
 
