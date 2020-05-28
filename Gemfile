@@ -37,7 +37,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'jquery-turbolinks', '~> 2.1'
 gem 'carrierwave', '~> 1.2', '>= 1.2.1'
 gem 'ffaker', '~> 2.7'
-gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'kaminari', '~> 1.2'
 gem 'toastr-rails', '~> 1.0', '>= 1.0.3'
 gem 'mini_magick', '~> 4.8'
 
